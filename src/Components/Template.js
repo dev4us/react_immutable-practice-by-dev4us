@@ -8,6 +8,7 @@ class Template extends React.Component {
       onInputData,
       inputName,
       inputNumber,
+      inputKeyword,
       check
     } = this.props;
 
@@ -28,6 +29,8 @@ class Template extends React.Component {
           value={inputNumber}
         />
         <button onClick={onInputData}>연락처 추가</button>
+        <br />
+        <input type="text" placeholder="검색" onChange={inputKeyword} />
         <button onClick={check}>로그 출력</button>
       </div>
     );
