@@ -13,7 +13,6 @@ class App extends React.Component {
     data: Map({
       inputName: "",
       inputNumber: "",
-      keyword: "",
       profile: List([
         Map({
           id: 0,
@@ -129,24 +128,10 @@ class App extends React.Component {
     //console.log(data.toJS());
   };
 
-  inputKeyword = e => {
-    const { data } = this.state;
-    const { value } = e.target;
-
-    this.setState({
-      data: data.set("keyword", value)
-    });
-  };
-
   render() {
     const { data } = this.state;
-    const keyword = data.get("keyword");
 
-    const profile = data
-      .get("profile")
-      .filter(profiles => profiles.get("name").indexOf(keyword) !== -1);
-    //const profile = data.get("profile");
-
+    const profile = data.get("profile");
     const inputName = data.get("inputName");
     const inputNumber = data.get("inputNumber");
 
@@ -155,7 +140,6 @@ class App extends React.Component {
       handleChangeNumber,
       handleInputData,
       handleBookMarker,
-      inputKeyword,
       check
     } = this;
 
@@ -167,7 +151,6 @@ class App extends React.Component {
           onInputData={handleInputData}
           inputName={inputName}
           inputNumber={inputNumber}
-          inputKeyword={inputKeyword}
           check={check}
         />
         <BookList listArray={profile} onBookMarker={handleBookMarker} />
